@@ -10,7 +10,9 @@ A small note taking app to write and store notes about a chosen topic. Features 
 
 ## Deployment
 
-Deployed live at [Coming Soon]()
+* Deployed live with [Heroku](https://heroku.com)
+
+* [Note Taker](https://note-taker300.herokuapp.com/)
 
 ## License
 

@@ -16,6 +16,8 @@ router.get('/', (req, res) => res.sendFile(path.join(__dirname, '../public/index
 
 router.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '../public/notes.html')));
 
+// router.get('*', (req, res) => res.sendFile(path.join(__dirname, '../public/index.html')));
+
 //Routes API
 //GET
 router.get('/api/notes', (req, res) => res.json(db));
@@ -32,9 +34,11 @@ router.post('/api/notes', (req, res) => {
 
 //DELETE
 router.delete('/api/notes/:id', (req, res) => {
-  console.log(req.params.id);
-  //put some code here to delete the note from the server
-  db.splice(db.indexOf(req.params.id), 1);
+  for ( i = 0; i < db.length; i++ ) {
+    if ( db[i].id == req.params.id ) {
+      db.splice(db.indexOf(db[i]), 1);
+    }
+  }
   
   res.json(db);
 });
