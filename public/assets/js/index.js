@@ -1,8 +1,12 @@
+// const db = require('../../../server/routes');
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+
+// console.log(db)
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -13,17 +17,15 @@ if (window.location.pathname === '/notes') {
 }
 
 // Show an element
-const show = (elem) => {
-  elem.style.display = 'inline';
-};
+const show = elem => elem.style.display = 'inline';
 
 // Hide an element
-const hide = (elem) => {
-  elem.style.display = 'none';
-};
+const hide = elem => elem.style.display = 'none';
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
+
+const randomId = () => Math.floor(Math.random() * 100) + 1;
 
 const getNotes = () =>
   fetch('/api/notes', {
@@ -65,7 +67,9 @@ const renderActiveNote = () => {
 };
 
 const handleNoteSave = () => {
+  console.log(noteTitle.value, noteText.value)
   const newNote = {
+    id: randomId(),
     title: noteTitle.value,
     text: noteText.value,
   };
@@ -80,8 +84,12 @@ const handleNoteDelete = (e) => {
   // prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
 
+  console.log(e)
+
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+
+  console.log(noteId);
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -97,6 +105,7 @@ const handleNoteDelete = (e) => {
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
+  console.log(activeNote)
   renderActiveNote();
 };
 
@@ -117,6 +126,7 @@ const handleRenderSaveBtn = () => {
 // Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
+  console.log(jsonNotes)
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
