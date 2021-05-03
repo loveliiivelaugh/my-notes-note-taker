@@ -25,8 +25,6 @@ const hide = elem => elem.style.display = 'none';
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-const randomId = () => Math.floor(Math.random() * 100) + 1;
-
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',

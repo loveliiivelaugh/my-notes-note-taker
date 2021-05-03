@@ -6,14 +6,17 @@ A small note taking app to write and store notes about a chosen topic. Features 
 
 ## Screenshot
 
+![Screenshot1](/public/assets/images/screenshot1.png)
+
+![Screenshot2](/public/assets/images/screenshot2.png)
+
+![Screenshot3](/public/assets/images/screenshot3.png)
 ## Demo
+
+![Gif](/public/assets/images/my-note-taker.gif)
 
 ## Deployment
 
 * Deployed live with [Heroku](https://heroku.com)
 
 * [Note Taker](https://note-taker300.herokuapp.com/)
-
-## License
-
-## Credits
